@@ -142,7 +142,7 @@ enum DossierExport {
                 var chunk = ""
                 for word in paragraphText.split(separator: " ", omittingEmptySubsequences: false) {
                     let candidate = chunk.isEmpty ? String(word) : chunk + " " + word
-                    let height = (candidate as NSString).boundingRect(with: CGSize(width: 528, height: .greatestFiniteMagnitude), options: [.usesLineFragmentOrigin, .usesFontLeading], attributes: attributes, context: nil).height
+                    let height = (candidate as NSString).boundingRect(with: CGSize(width: 528, height: CGFloat.greatestFiniteMagnitude), options: [.usesLineFragmentOrigin, .usesFontLeading], attributes: attributes, context: nil).height
                     if height > 170 && !chunk.isEmpty {
                         chunks.append(chunk)
                         chunk = String(word)
@@ -150,7 +150,7 @@ enum DossierExport {
                 }
                 if !chunk.isEmpty { chunks.append(chunk) }
                 for segment in chunks {
-                    let height = ceil((segment as NSString).boundingRect(with: CGSize(width: 528, height: .greatestFiniteMagnitude), options: [.usesLineFragmentOrigin, .usesFontLeading], attributes: attributes, context: nil).height)
+                    let height = ceil((segment as NSString).boundingRect(with: CGSize(width: 528, height: CGFloat.greatestFiniteMagnitude), options: [.usesLineFragmentOrigin, .usesFontLeading], attributes: attributes, context: nil).height)
                     if cursor + height > 726 { beginPage() }
                     (segment as NSString).draw(in: CGRect(x: 42, y: cursor, width: 528, height: height + 2), withAttributes: attributes)
                     cursor += height + 5
