@@ -1,0 +1,26 @@
+name: Build Watchdog for Appetize
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build-appetize:
+    runs-on: macos-15
+    timeout-minutes: 30
+    steps:
+      - name: Check out source
+        uses: actions/checkout@v4
+
+      - name: Build iOS Simulator app for Appetize
+        run: bash Scripts/build-appetize.sh
+
+      - name: Upload Appetize package
+        uses: actions/upload-artifact@v4
+        with:
+          name: watchdog-appetize-ios
+          path: build/appetize/Watchdog-Appetize.zip
+          if-no-files-found: error
+          retention-days: 14

@@ -1,0 +1,22 @@
+name: Watchdog native verification
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  native:
+    runs-on: macos-15
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify native consumer app
+        run: bash Scripts/verify-macos.sh
+      - name: Save Apple test results and screenshots
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: watchdog-apple-test-results
+          path: build/*.xcresult
+          if-no-files-found: ignore
