@@ -1,0 +1,56 @@
+{
+  "checkedAt": "2026-09-14T17:48:39.268Z",
+  "checks": [
+    {
+      "name": "NJ address geocoder",
+      "ok": true,
+      "milliseconds": 211,
+      "addressCandidateAvailable": true,
+      "addressType": "StreetAddress"
+    },
+    {
+      "name": "Watchdog municipal directory",
+      "ok": true,
+      "milliseconds": 351,
+      "count": 564
+    },
+    {
+      "name": "Chapter 123 single district",
+      "ok": true,
+      "milliseconds": 913,
+      "taxYear": 2026,
+      "ratioPercent": 70.95,
+      "source": "https://www.nj.gov/treasury/taxation/pdf/lpt/chap123/2026CH123.pdf"
+    },
+    {
+      "name": "Chapter 123 batch contract",
+      "ok": true,
+      "milliseconds": 1099,
+      "requested": 2,
+      "returned": 2,
+      "taxYear": 2026
+    },
+    {
+      "name": "NJ parcel search and coordinate contract",
+      "ok": true,
+      "milliseconds": 1501,
+      "count": 2,
+      "coordinatesAvailable": true,
+      "effectiveTaxYearAvailable": false,
+      "effectiveAssessmentYearAvailable": false
+    },
+    {
+      "name": "Canonical public Watchdog Score RPC",
+      "ok": true,
+      "milliseconds": 228,
+      "requested": 1,
+      "returned": 0,
+      "missingScoreIsValid": true
+    }
+  ],
+  "notes": [
+    "The sampled live parcel has no canonical score. The app keeps it unavailable; this is valid source behavior, not a fabricated score.",
+    "These are endpoint contract probes run with Node fetch. They do not compile Swift, exercise URLSession on a device, or certify native UI."
+  ],
+  "ok": true
+}
